@@ -1,0 +1,57 @@
+﻿@using ErrorLog.Models;
+@using ErrorLog.Controllers
+@model List<Error>
+
+@Html.ActionLink("Добавить запись", "Create", "Errors")
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    Код ошибки
+                </th>
+                <th>
+                    Тип ошибки
+                </th>
+                <th>
+                    Дата и время
+                </th>
+                <th>
+                    Описание
+                </th>
+                <th>
+                    Решение
+                </th>
+                <th>
+                    Действия
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var error in Model)
+            {
+                <tr>
+                    <td>
+                        @error.ErrorCode
+                    </td>
+                    <td>
+                        @error.Type
+                    </td>
+                    <td>
+                        @error.Date  
+                    </td>
+                    <td>
+                        @error.Description
+                    </td>
+                    <td>
+                        @error.Solution
+                    </td>
+                    <td>
+                        @Html.ActionLink("Удалить запись", "Delete", "Errors", new { id = error.Id }, new { })
+                        @Html.ActionLink("Изменить", "Edit", "Errors", new { id = error.Id }, new { })
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>

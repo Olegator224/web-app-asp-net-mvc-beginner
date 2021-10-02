@@ -1,0 +1,9 @@
+﻿@using ErrorLog.Models;
+@model Error
+
+@using (Html.BeginForm("Create", "Errors", FormMethod.Post))
+{
+    @Html.EditorForModel()
+    <input type="submit" value="Сохранить" />
+    @Html.ActionLink("Отменить", "Index", "Errors")
+}
